@@ -1,0 +1,8 @@
+.location-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.done-button {
+  width: 50px;
+}

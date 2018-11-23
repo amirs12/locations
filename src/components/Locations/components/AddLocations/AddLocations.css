@@ -1,0 +1,9 @@
+.location-form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.save-button {
+  width: 50px;
+}

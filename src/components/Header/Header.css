@@ -1,0 +1,16 @@
+.header {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: midnightblue;
+}
+
+.manage-button {
+  width: 60px;
+  height: 30px;
+  color: white;
+}
