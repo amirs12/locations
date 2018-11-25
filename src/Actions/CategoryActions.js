@@ -26,3 +26,8 @@ export const saveEditCategory = (text, id) => ({
   text,
   id
 })
+
+export const pendingCategoryChoice = (id) => ({
+  type: 'PENDING_CATEGORY_ITEM',
+  id
+})

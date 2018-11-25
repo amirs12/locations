@@ -12,10 +12,31 @@ import './Locations.css';
 
 class Locations extends Component {
   render() {
-    const { locations, addLocationOpen } = this.props
+    const { locations, addLocationOpen, visibilityFilterState, categoryTofilter } = this.props
     let addLocationBox
+ 
     if (addLocationOpen) {
       addLocationBox = <AddLocations />
+    }
+
+    let visibleLocaiotns
+    if (visibilityFilterState === "FILTER_BY_CATEGORY") {
+      visibleLocaiotns = 
+        locations.filter(location =>
+          (location.chosenCategories.indexOf(categoryTofilter) > -1)
+        ).map(location =>
+          <Location
+            key={location.id} locations={locations} 
+            {...location}
+          />
+        )
+    } else {
+      visibleLocaiotns = locations.map(location =>
+        <Location
+          key={location.id} locations={locations} 
+          {...location}
+        />
+      )
     }
 
     return (
@@ -26,14 +47,9 @@ class Locations extends Component {
           <FilterContainer />
           <div>
             {addLocationBox}
-            <div>
-              {locations.map(location =>
-                <Location
-                  key={location.id} locations={locations} 
-                  {...location}
-                />
-              )}
-            </div>
+          </div>
+          <div>
+            {visibleLocaiotns}
           </div>
         </article>
         <Footer page="locations"/>
@@ -52,7 +68,9 @@ Locations.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  addLocationOpen: state.addItemReducer.addLocationOpen
+  addLocationOpen: state.categoryItemReducer.addLocationOpen,
+  visibilityFilterState: state.visibilityFilterReducer.visibilityFilterState,
+  categoryTofilter: state.categoryItemReducer.categoryTofilter
 })
 
 export default connect(mapStateToProps)(Locations)

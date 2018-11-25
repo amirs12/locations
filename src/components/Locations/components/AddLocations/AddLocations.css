@@ -1,9 +1,16 @@
 .location-form {
   display: flex;
   flex-direction: column;
-  width: 200px;
+}
+
+.location-input {
+  width: 100px;
 }
 
 .save-button {
   width: 50px;
+}
+
+.choose-category {
+  display: flex;
 }

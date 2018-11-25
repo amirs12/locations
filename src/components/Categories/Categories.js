@@ -46,7 +46,7 @@ Categories.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  addCategoryOpen: state.addItemReducer.addCategoryOpen
+  addCategoryOpen: state.categoryItemReducer.addCategoryOpen
 })
 
 export default connect(mapStateToProps)(Categories)

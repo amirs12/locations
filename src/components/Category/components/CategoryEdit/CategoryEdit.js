@@ -27,7 +27,7 @@ class CategoryEdit extends Component {
   }
   
   const mapStateToProps = state => ({
-  //  addBoxOpen: state.addItemReducer.addBoxOpen
+  //  addBoxOpen: state.categoryItemReducer.addBoxOpen
   })
   
   export default connect(mapStateToProps, { saveEditCategory })(CategoryEdit)

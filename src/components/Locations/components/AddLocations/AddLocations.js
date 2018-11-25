@@ -1,42 +1,61 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { saveLocation, closeAddLocation } from '../../../../Actions/LocationActions.js'
+import { saveLocation, closeAddLocation, openChooseCategory } from '../../../../Actions/LocationActions.js'
+import ChooseCategory from '../../../../common/ChooseCategory/ChooseCategory.js'
 
 import './AddLocations.css';
 
 class AddLocations extends Component {
   render() {
+    const { chooseCategoryOpen, categories } = this.props
     let inputName,
         inputAddress,
         inputCoordinates,
-        inputCategory
+        chooseCategoryBox
 
+    if (chooseCategoryOpen === true) {
+      chooseCategoryBox = <ChooseCategory />
+    }
     return (
       <div>
         <form className="location-form" onSubmit={e => {
           e.preventDefault()
+          let chosenCategories = categories.filter(category => 
+            (category.pendingCategory === true)
+          ).map(category =>
+            category.text
+          )
           if (!inputName.value.trim() || 
               !inputAddress.value.trim() ||
               !inputCoordinates.value.trim() ||
-              !inputCategory.value.trim()) {
+              !chosenCategories) {
             return
           }
           this.props.saveLocation(
             inputName.value, 
             inputAddress.value, 
-            inputCoordinates.value, 
-            inputCategory
+            inputCoordinates.value,
+            chosenCategories 
           )
           this.props.closeAddLocation()
           inputName.value = ''
           inputAddress.value = ''
           inputCoordinates.value = ''
-          inputCategory.value = ''
         }}>
-          <input ref={node => inputName = node} name="lct-name" id="lct-name" placeholder="Location Name" autoFocus/>
-          <input ref={node => inputAddress = node} name="lct-adr" id="lct-adr" placeholder="Address"/>
-          <input ref={node => inputCoordinates = node} name="lct-coo" id="lct-coo" placeholder="Coordinates"/>
-          <input ref={node => inputCategory = node} name="lct-ctg" id="lct-ctg" placeholder="Category"/>
+          <input ref={node => inputName = node} className="location-input" placeholder="Location Name" autoFocus/>
+          <input ref={node => inputAddress = node} className="location-input" placeholder="Address"/>
+          <input ref={node => inputCoordinates = node} className="location-input" placeholder="Coordinates"/>
+          <div className="choose-category">
+            <div className="choose-title">Choose a Category </div>  
+            <button className="choose-button" 
+                    onClick={e => {
+                      e.preventDefault()
+                      this.props.openChooseCategory()
+                    }}
+              > + 
+            </button>
+            {chooseCategoryBox}
+          </div>
           <button className="save-button" type="submit">Save</button>
         </form>
       </div>
@@ -45,7 +64,8 @@ class AddLocations extends Component {
 }
 
 const mapStateToProps = state => ({
-//  addBoxOpen: state.addItemReducer.addBoxOpen
+  categories: state.categoryItemReducer.categories,
+  chooseCategoryOpen: state.locationItemReducer.chooseCategoryOpen
 })
 
-export default connect(mapStateToProps, { saveLocation, closeAddLocation })(AddLocations)
+export default connect(mapStateToProps, { saveLocation, closeAddLocation, openChooseCategory })(AddLocations)

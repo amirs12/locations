@@ -3,14 +3,14 @@ export const selectLocationItem = (id) => ({
   id
 })
 
-let nextLocationId = 1
-export const saveLocation = (text, address, coordinates, category) => ({
+let nextLocationId = 0
+export const saveLocation = (text, address, coordinates, chosenCategories) => ({
   type: 'ADD_LOCATION',
   id: nextLocationId++,
   text,
   address,
   coordinates,
-  category
+  chosenCategories
 })
 
 export const closeAddLocation = () => ({
@@ -22,8 +22,24 @@ export const closeViewLocation = (id) => ({
   id
 })
 
-export const saveEditLocation = (text, id) => ({
+export const saveEditLocation = ( id, text, address, coordinates, chosenCategories) => ({
   type: 'SAVE_LOCATION_EDIT',
+  id,
   text,
+  address,
+  coordinates,
+  chosenCategories
+})
+
+export const closeEditLocation = (id) => ({
+  type: 'CLOSE_EDIT_LOCATION',
   id
+})
+
+export const openChooseCategory = () => ({
+  type: 'OPEN_CHOOSE_CATEGORY'
+})
+
+export const closeChooseCategory = () => ({
+  type: 'CLOSE_CHOOSE_CATEGORY'
 })

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import LocationDetails from './components/LocationDetails/LocationDetails'
-import LocationEdit from './components/LocationEdit/LocationEdit'
-import { selectLocationItem } from '../../Actions/LocationActions'
+import LocationDetails from './components/LocationDetails/LocationDetails.js'
+import LocationEdit from './components/LocationEdit/LocationEdit.js'
+import { selectLocationItem } from '../../Actions/LocationActions.js'
 
 import './Location.css';
 
@@ -12,15 +12,19 @@ class Location extends Component {
     const { locations, selected, text, id } = this.props
     let detailsBox,
         editBox
-    
-    if (locations[id].deleted === true) {
+    let location = locations[id]
+
+    if (location.deleted === true) {
       return <div></div>
     } else {
-      if (locations[id].viewMode === true) {
-        detailsBox = <LocationDetails locations={locations} id={id}/>
+/*      detailsBox = locations.filter(location =>
+        (location.id === id)
+      )*/
+      if (location.viewMode === true) {
+        detailsBox = <LocationDetails location={location} id={id}/>
       }
-      if (locations[id].editMode === true) {
-        editBox = <LocationEdit text={text} id={id}/>
+      if (location.editMode === true) {
+        editBox = <LocationEdit id={id}/>
       }
     }
 
@@ -43,7 +47,7 @@ Location.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  addLocationOpen: state.addItemReducer.addLocationOpen,
+  addLocationOpen: state.categoryItemReducer.addLocationOpen,
 })
 
 export default connect(mapStateToProps, { selectLocationItem })(Location)

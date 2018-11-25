@@ -1,14 +1,6 @@
 const initialState = {
-  locations: [{
-    id: 0, 
-    text: "hard coded location", 
-    address: "hard coded address",
-    coordinates: "hard coded coordinates",
-    category: "hard coded category",
-    selected: false, 
-    viewMode: false, 
-    editMode: false
-  }]
+  locations: [],
+  chooseCategoryOpen: false
 }
 
 const locationItemReducer = (state = initialState, action) => {
@@ -22,8 +14,10 @@ const locationItemReducer = (state = initialState, action) => {
               text: action.text, 
               address: action.address,
               coordinates: action.coordinates,
-              category: action.category,
-              selected: false, editMode: false, viewMode: false
+              chosenCategories: action.chosenCategories,
+              selected: false, 
+              editMode: false, 
+              viewMode: false
         }]  
       }
     case 'SELECT_LOCATION_ITEM':
@@ -58,7 +52,7 @@ const locationItemReducer = (state = initialState, action) => {
         ...state,
         locations: state.locations.map(location =>
           (location.id === action.id)
-          ? {...location, viewMode: false}
+          ? {...location, viewMode: false, selected: false}
           : location 
         )  
       }  
@@ -76,10 +70,38 @@ const locationItemReducer = (state = initialState, action) => {
         ...state,
         locations: state.locations.map(location =>
           (location.id === action.id)
-          ? {...location, editMode: false, text: action.text}
+          ? {...location, 
+            id: action.id, 
+            text: action.text, 
+            address: action.address,
+            coordinates: action.coordinates,
+            chosenCategories: action.chosenCategories,
+            selected: false, 
+            editMode: false, 
+            viewMode: false
+          }
           : location 
         )
       }
+    case 'CLOSE_EDIT_LOCATION':
+      return {
+        ...state,
+        locations: state.locations.map(location =>
+          (location.id === action.id)
+          ? {...location, editMode: false, selected: false}
+          : location 
+        )  
+      }   
+    case 'OPEN_CHOOSE_CATEGORY':
+      return {
+        ...state,
+        chooseCategoryOpen: true
+      }  
+    case 'CLOSE_CHOOSE_CATEGORY':
+      return {
+        ...state,
+        chooseCategoryOpen: false
+      }  
     default:
       return state
   }

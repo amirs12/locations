@@ -43,7 +43,7 @@ Category.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  addCategoryOpen: state.addItemReducer.addCategoryOpen,
+  addCategoryOpen: state.categoryItemReducer.addCategoryOpen,
 })
 
 export default connect(mapStateToProps, { selectCategoryItem })(Category)

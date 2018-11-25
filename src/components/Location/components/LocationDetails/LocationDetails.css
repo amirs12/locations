@@ -6,3 +6,16 @@
 .done-button {
   width: 50px;
 }
+
+.connectd-categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.details-property {
+  display: flex;
+}
+
+.details-title {
+  margin-right: 20px;
+}

@@ -6,13 +6,27 @@ import './LocationDetails.css';
 
 class LocationDetails extends Component {
     render() {
-      const { locations, id } = this.props
+      const { location, id } = this.props
+      let connectdCategories = location.chosenCategories.map(category => category)
+
       return (
         <div className="location-details">
-          <div>{locations[id].text}</div>
-          <div>{locations[id].address}</div>
-          <div>{locations[id].coordinates}</div>
-          <div>{locations[id].category}</div>
+          <div className="details-property">
+            <div className="details-title">Location Name</div>
+            <div className="details-text">{location.text}</div>
+          </div>
+          <div className="details-property">
+            <div className="details-title">Location Address</div>
+            <div className="details-text">{location.address}</div>
+          </div>
+          <div className="details-property">
+            <div className="details-title">Location Coordinates</div>
+            <div className="details-text">{location.coordinates}</div>
+          </div>
+          <div className="details-property">
+            <div className="details-title">Location Categories</div>
+            <div className="connectd-categories">{connectdCategories}</div>
+          </div>  
           <button className="done-button" onClick={() => this.props.closeViewLocation(id)}>Done</button>
         </div>
       )
@@ -20,7 +34,7 @@ class LocationDetails extends Component {
   }
   
   const mapStateToProps = state => ({
-  //  addBoxOpen: state.addItemReducer.addBoxOpen
+  //  addBoxOpen: state.categoryItemReducer.addBoxOpen
   })
   
   export default connect(mapStateToProps, { closeViewLocation })(LocationDetails)

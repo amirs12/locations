@@ -3,8 +3,13 @@ const initialState = {
     id: 0, 
     text: "hard coded category", 
     selected: false, 
+    pendingCategory: false,
+    filteredCategory: false,
     viewMode: false, 
-    editMode: false}]
+    editMode: false
+  }],
+  addCategoryOpen: false,
+  addLocationOpen: false
 }
 
 const categoryItemReducer = (state = initialState, action) => {
@@ -69,6 +74,45 @@ const categoryItemReducer = (state = initialState, action) => {
           ? {...category, editMode: false, text: action.text}
           : category 
         )
+      }
+    case 'PENDING_CATEGORY_ITEM':
+      return {
+        ...state,
+        categories: state.categories.map(category =>
+          (category.id === action.id)
+          ? {...category, pendingCategory: !category.pendingCategory}
+          : category 
+        )  
+      }
+    case 'SAVE_FILTERED_CATEGORIS':
+      return {
+        ...state,
+        categoryTofilter: action.categories[action.id].text
+      }
+    case 'CLOSE_ADD_LOCATION':
+      return {
+        ...state,
+        categories: state.categories.map(category => 
+          (category.pendingCategory === true)
+          ? {...category, pendingCategory: false}
+          : category
+        ),
+        addLocationOpen: false
+      }
+    case 'OPEN_ADD_CATEGORY':
+      return {
+        ...state,
+        addCategoryOpen: true
+      }
+    case 'CLOSE_ADD_CATEGORY':
+      return {
+        ...state,
+        addCategoryOpen: false
+      }
+    case 'OPEN_ADD_LOCATION':
+      return {
+        ...state,
+        addLocationOpen: true
       }
     default:
       return state
