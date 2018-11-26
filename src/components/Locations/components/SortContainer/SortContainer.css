@@ -1,0 +1,11 @@
+.sort-container {
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+}
+
+.sort-title {
+  margin-right: 2px;
+  font-size: 14px;
+  color: white;
+}

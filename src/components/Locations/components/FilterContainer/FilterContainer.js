@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import FilterAllLink from '../components/FilterAllLink/FilterAllLink.js'
-import CategoryLink from '../components/CategoryLink/CategoryLink.js'
-import ChooseFilterCategory from '../components/ChooseFilterCategory/ChooseFilterCategory.js'
+import FilterAllLink from '../../../FilterAllLink/FilterAllLink.js'
+import CategoryLink from '../../../CategoryLink/CategoryLink.js'
+import ChooseFilterCategory from '../../../ChooseFilterCategory/ChooseFilterCategory.js'
 
-//import './FilterContainer.css';
+import './FilterContainer.css';
 
 class FilterContainer extends Component {
   render() {
@@ -16,7 +16,7 @@ class FilterContainer extends Component {
 
     return (
       <div className="filter-container">
-        <span>Filter: </span>
+        <span className="filter-title">Filter: </span>
         <FilterAllLink filter={"FILTER_ALL"}/>
         <CategoryLink filter={"FILTER_BY_CATEGORY"}/>
         <div>{filterCategoryBox}</div>

@@ -6,10 +6,31 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: midnightblue;
+  background-color: #2A2D3C;
 }
 
-.link {
+.footer-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   text-decoration: none;
   color: white;
+}
+
+.fa-map-marker-alt {
+  font-size: 18px;
+}
+
+.footer-locations {
+  padding-top: 2px;
+  font-size: 10px;
+}
+
+.fa-folder-open {
+  font-size: 19px;
+}
+
+.footer-categories {
+  font-size: 10px;
 }

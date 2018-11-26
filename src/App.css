@@ -1,3 +1,7 @@
+body {
+  background-color: #1C1F28;
+}
+
 .home-header {
   position: fixed;
   top: 100px;

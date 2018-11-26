@@ -5,8 +5,8 @@ import Location from '../Location/Location.js'
 import AddLocations from './components/AddLocations/AddLocations.js'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
-import SortContainer from '../../containers/SortContainer'
-import FilterContainer from '../../containers/FilterContainer'
+import SortContainer from './components/SortContainer/SortContainer.js'
+import FilterContainer from './components/FilterContainer/FilterContainer.js'
 
 import './Locations.css';
 
@@ -40,8 +40,8 @@ class Locations extends Component {
     }
 
     return (
-      <div>
-        <Header page="locations"/>
+      <div className="locations">
+        <Header page="locations" name="My Locations"/>
         <article className="locations-box">
           <SortContainer />
           <FilterContainer />

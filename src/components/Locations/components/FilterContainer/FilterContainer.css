@@ -1,0 +1,11 @@
+.filter-container {
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+}
+
+.filter-title {
+  margin-right: 2px;
+  font-size: 14px;
+  color: white;
+}

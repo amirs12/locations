@@ -6,13 +6,26 @@ import './Header.css';
 
 class Header extends Component {
   render() {
-    const { page } = this.props
+    const { page, name } = this.props
     return (
       <div className="header">
-        <div className="manage-button" onClick={() => this.props.viewItem(page)}>View</div>
-        <div className="manage-button" onClick={() => this.props.editItem(page)} >Edit</div>
-        <div className="manage-button" onClick={() => this.props.addItem(page)}>Add</div>
-        <div className="manage-button" onClick={() => this.props.deleteItem(page)}>Delete</div>
+        <span className="">{name}</span>
+        <div className="manage-button" onClick={() => this.props.addItem(page)}>
+          <i className="fas fa-plus-square"></i>
+          <div className="manage-button-title">Add</div>
+        </div>
+        <div className="manage-button" onClick={() => this.props.viewItem(page)}>
+          <i className="fas fa-eye"></i>
+          <div className="manage-button-title">View</div>
+        </div>
+        <div className="manage-button" onClick={() => this.props.editItem(page)}>
+          <i className="fas fa-pencil-alt"></i>
+          <div className="manage-button-title">Edit</div>
+        </div>
+        <div className="manage-button" onClick={() => this.props.deleteItem(page)}>
+          <i className="fas fa-trash-alt"></i>
+          <div className="manage-button-title">Delete</div>
+        </div>
       </div>
     )
   }

@@ -24,7 +24,7 @@ export const openfilterBox = () => ({
   type: 'OPEN_FILTER_BOX'
 })
 
-export const pendingFilteredCategory = (id) => ({
+export const pendingFilteredCategory = id => ({
   type: 'PENDING_FILTERED_CATEGORY',
   id
 })
@@ -105,4 +105,11 @@ export const editItem = page => {
         type: 'home'
       }
   }
-}
+}  
+
+export const selectPageItem = page => {
+  return {
+    type: 'SELECT_PAGE',
+    page
+  }
+}  

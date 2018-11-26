@@ -6,11 +6,27 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: midnightblue;
+  background-color: #2A2D3C;
+  color: white;
 }
 
 .manage-button {
-  width: 60px;
-  height: 30px;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manage-button-title {
+  font-size: 10px;
+}
+
+.fa-plus-square, .fa-eye, .fa-trash-alt {
+  padding-bottom: 1px;
+  font-size: 18px;
+}
+
+.fa-pencil-alt {
+  padding-bottom: 2px;
+  padding-top: 2px;
 }

@@ -18,7 +18,7 @@ class Categories extends Component {
 
     return (
       <div>
-        <Header page="categories"/>
+        <Header page="categories" name="My Categories"/>
         <article className="categories-box">
           {addCategoryBox}
           <div>

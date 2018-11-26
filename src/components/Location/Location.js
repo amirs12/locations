@@ -31,7 +31,7 @@ class Location extends Component {
     return (
       <div className="location-item" 
            onClick={() => this.props.selectLocationItem(id)}
-           style={{color: selected ? 'red' : 'black'}}
+           style={{color: selected ? 'red' : 'white'}}
            >
         <div>{text}</div>
         <div>{detailsBox}</div>

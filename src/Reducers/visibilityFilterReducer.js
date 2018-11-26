@@ -1,6 +1,7 @@
 const initialState = {
   visibilityFilterState: "SHOW_ALL",
-  filterCategoryOpen: false
+  filterCategoryOpen: false,
+  selectedPage: 'home'
 }
 
 const visibilityFilterReducer = (state = initialState, action) => {
@@ -19,7 +20,12 @@ const visibilityFilterReducer = (state = initialState, action) => {
       return {
         ...state,
         filterCategoryOpen: false
-      }  
+      }
+    case 'SELECT_PAGE':
+      return {
+        ...state,
+        selectedPage: action.page
+      }
     default:
       return state
   }
