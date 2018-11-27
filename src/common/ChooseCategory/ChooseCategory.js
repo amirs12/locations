@@ -14,7 +14,8 @@ class ChooseCategory extends Component {
           <div className="choose-box">
             {categories.map(category =>
               <div key={category.id} 
-                   style={{color: category.pendingCategory ? 'cyan' : 'white'}}
+                   style={{color: category.pendingCategory ? 'cyan' : 'white', 
+                     display: category.deleted ? 'none' : 'flex'}}
                    onClick={(e) => {
                      e.preventDefault()
                      this.props.pendingCategoryChoice(category.id)
