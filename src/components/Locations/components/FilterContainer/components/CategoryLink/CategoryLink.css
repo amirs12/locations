@@ -1,9 +1,5 @@
-.category-link {
-  display: flex;
-  font-size: 14px;
-}
-
 .by-category {
   margin-left: 16px;
   border-bottom: solid 1px;
+  font-size: 14px;
 }

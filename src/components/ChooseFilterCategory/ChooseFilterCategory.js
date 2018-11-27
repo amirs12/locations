@@ -10,20 +10,18 @@ class ChooseFilterCategory extends Component {
 
       return (
         <div className="choose-filter-category">
-          <div className="choose-box">
-            {categories.map(category =>
-              <div key={category.id} 
-                   style={{color: category.pendingCategory ? 'cyan' : 'white'}}
-                   onClick={(e) => {
-                     e.preventDefault()
-                     this.props.savefilteredCategories(categories, category.id)
-                     this.props.closefilterBox()
-                   }}
-                   >
-                <div>{category.text}</div>
-              </div>
-            )}
-          </div>
+          {categories.map(category =>
+            <div key={category.id} 
+                  style={{color: category.pendingCategory ? 'cyan' : 'white'}}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    this.props.savefilteredCategories(categories, category.id)
+                    this.props.closefilterBox()
+                  }}
+                  >
+              <div className="category-options">{category.text}</div>
+            </div>
+          )}
         </div>
       )
     }  

@@ -6,57 +6,72 @@ import ChooseCategory from '../../../../common/ChooseCategory/ChooseCategory.js'
 import './LocationEdit.css';
 
 class LocationEdit extends Component {
+  componentWillMount() {
+    this.props.openChooseCategory()
+  }
+
   render() {
-    const { chooseCategoryOpen, categories, id } = this.props
+    const { categories, id } = this.props
     let inputName,
         inputAddress,
-        inputCoordinates,
-        chooseCategoryBox
-
-    if (chooseCategoryOpen === true) {
-      chooseCategoryBox = <ChooseCategory />
-    }
+        inputCoordinates
 
     return (
       <div>
-        <form className="location-form" onSubmit={e => {
-          e.preventDefault()
-          let chosenCategories = categories.filter(category => 
-            (category.pendingCategory === true)
-          )
-          if (!inputName.value.trim() || 
-              !inputAddress.value.trim() ||
-              !inputCoordinates.value.trim() ||
-              !chosenCategories) {
-            return
-          }
-          this.props.saveEditLocation(
-            id,
-            inputName.value, 
-            inputAddress.value, 
-            inputCoordinates.value,
-            chosenCategories 
-          )
-          this.props.closeEditLocation(id)
-          inputName.value = ''
-          inputAddress.value = ''
-          inputCoordinates.value = ''
-        }}>
-          <input ref={node => inputName = node} className="location-input" placeholder="Location Name" autoFocus/>
-          <input ref={node => inputAddress = node} className="location-input" placeholder="Address"/>
-          <input ref={node => inputCoordinates = node} className="location-input" placeholder="Coordinates"/>
-          <div className="choose-category">
-            <div className="choose-title">Choose a Category </div>  
-            <button className="choose-button" 
-                    onClick={e => {
-                      e.preventDefault()
-                      this.props.openChooseCategory()
-                    }}
-              > + 
-            </button>
-            {chooseCategoryBox}
+        <form 
+          className="location-form" 
+          onSubmit={e => {
+            e.preventDefault()
+            let chosenCategories = categories.filter(category => 
+              (category.pendingCategory === true)
+            )
+            if (!inputName.value.trim() || 
+                !inputAddress.value.trim() ||
+                !inputCoordinates.value.trim() ||
+                !chosenCategories) {
+              return
+            }
+            this.props.saveEditLocation(
+              id,
+              inputName.value, 
+              inputAddress.value, 
+              inputCoordinates.value,
+              chosenCategories 
+            )
+            this.props.closeEditLocation(id)
+            inputName.value = ''
+            inputAddress.value = ''
+            inputCoordinates.value = ''
+          }}
+        >
+          <div className="form-property">
+            <div className="property-title">Location Name</div>
+            <input ref={node => inputName = node} className="location-input" placeholder="Location Name" autoFocus/>
           </div>
-          <button className="save-button" type="submit">Save</button>
+          <div className="form-property">
+            <div className="property-title">Address</div>
+            <input ref={node => inputAddress = node} className="location-input" placeholder="Address"/>
+          </div>
+          <div className="form-property">
+            <div className="property-title">Coordinates</div>
+            <input ref={node => inputCoordinates = node} className="location-input" placeholder="Coordinates"/>
+          </div>
+          <div className="form-property">
+            <div className="choose-title">Assign a Category </div>  
+            <ChooseCategory />
+          </div>
+          <div className="add-buttons">
+            <button className="save-button" type="submit">Save</button>
+            <button 
+              className="cancel-button" 
+              onClick={e => {
+                e.preventDefault()
+                this.props.closeAddLocation()
+              }}
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     )
@@ -64,8 +79,7 @@ class LocationEdit extends Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.manageItemReducer.categories,
-  chooseCategoryOpen: state.locationItemReducer.chooseCategoryOpen
+  categories: state.manageItemReducer.categories
 })
 
 export default connect(mapStateToProps, { saveEditLocation, openChooseCategory, closeEditLocation })(LocationEdit)

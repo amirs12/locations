@@ -18,46 +18,49 @@ class AddLocations extends Component {
 
     return (
       <div>
-        <form className="location-form" onSubmit={e => {
-          e.preventDefault()
-          let chosenCategories = categories.filter(category => 
-            (category.pendingCategory === true)
-          ).map(category =>
-            category.text
-          )
-          if (!inputName.value.trim() || 
-              !inputAddress.value.trim() ||
-              !inputCoordinates.value.trim() ||
-              !chosenCategories) {
-            return
-          }
-          this.props.saveLocation(
-            inputName.value, 
-            inputAddress.value, 
-            inputCoordinates.value,
-            chosenCategories 
-          )
-          this.props.closeAddLocation()
-          inputName.value = ''
-          inputAddress.value = ''
-          inputCoordinates.value = ''
-        }}>
-            <div className="form-property">
-              <div className="property-title">Location Name</div>
-              <input ref={node => inputName = node} className="location-input" placeholder="Location Name" autoFocus/>
-            </div>
-            <div className="form-property">
-              <div className="property-title">Address</div>
-              <input ref={node => inputAddress = node} className="location-input" placeholder="Address"/>
-            </div>
-            <div className="form-property">
-              <div className="property-title">Coordinates</div>
-              <input ref={node => inputCoordinates = node} className="location-input" placeholder="Coordinates"/>
-            </div>
-            <div className="form-property">
-              <div className="choose-title">Assign a Category </div>  
-              <ChooseCategory />
-            </div>
+        <form 
+          className="location-form" 
+          onSubmit={e => {
+            e.preventDefault()
+            let chosenCategories = categories.filter(category => 
+              (category.pendingCategory === true)
+            ).map(category =>
+              category.text
+            )
+            if (!inputName.value.trim() || 
+                !inputAddress.value.trim() ||
+                !inputCoordinates.value.trim() ||
+                !chosenCategories) {
+              return
+            }
+            this.props.saveLocation(
+              inputName.value, 
+              inputAddress.value, 
+              inputCoordinates.value,
+              chosenCategories 
+            )
+            this.props.closeAddLocation()
+            inputName.value = ''
+            inputAddress.value = ''
+            inputCoordinates.value = ''
+          }}
+        >
+          <div className="form-property">
+            <div className="property-title">Location Name</div>
+            <input ref={node => inputName = node} className="location-input" placeholder="Location Name" autoFocus/>
+          </div>
+          <div className="form-property">
+            <div className="property-title">Address</div>
+            <input ref={node => inputAddress = node} className="location-input" placeholder="Address"/>
+          </div>
+          <div className="form-property">
+            <div className="property-title">Coordinates</div>
+            <input ref={node => inputCoordinates = node} className="location-input" placeholder="Coordinates"/>
+          </div>
+          <div className="form-property">
+            <div className="choose-title">Assign a Category </div>  
+            <ChooseCategory />
+          </div>
           <div className="add-buttons">
             <button className="save-button" type="submit">Save</button>
             <button className="cancel-button" 
@@ -75,8 +78,7 @@ class AddLocations extends Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.manageItemReducer.categories,
-  chooseCategoryOpen: state.locationItemReducer.chooseCategoryOpen
+  categories: state.manageItemReducer.categories
 })
 
 export default connect(mapStateToProps, { saveLocation, closeAddLocation, openChooseCategory })(AddLocations)

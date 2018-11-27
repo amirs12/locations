@@ -10,19 +10,17 @@ class CategoryLink extends Component {
     const active = visibilityFilterState  === 'FILTER_BY_CATEGORY'
 
     return (
-      <div className="category-link">
-        <div
-          className="by-category"
-          onClick={() => {
-            this.props.setVisibilityFilter(filter)
-            this.props.openfilterBox()
-          }}
-          style={{
-            borderBottomColor: active ? 'cyan' : 'white',
-            color: active ? 'cyan' : 'white'
-          }}
-          >By Category
-        </div>
+      <div
+        className="by-category"
+        onClick={() => {
+          this.props.setVisibilityFilter(filter)
+          this.props.openfilterBox()
+        }}
+        style={{
+          borderBottomColor: active ? 'cyan' : 'white',
+          color: active ? 'cyan' : 'white'
+        }}
+        >By Category
       </div>
     )
   }  

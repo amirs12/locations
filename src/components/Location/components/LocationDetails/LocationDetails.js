@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { closeViewLocation } from '../../../../Actions/LocationActions.js'
+import AssignedCategory from './components/AssignedCategory/AssignedCategory.js'
 
 import './LocationDetails.css';
 
 class LocationDetails extends Component {
     render() {
       const { location, id } = this.props
-      let connectdCategories = location.chosenCategories.map(category => category.text)
+      let connectdCategories = location.chosenCategories.map(category => 
+        <AssignedCategory text={category}/>
+      )
 
       return (
         <div className="location-details">
