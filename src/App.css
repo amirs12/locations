@@ -2,7 +2,20 @@ body {
   background-color: #1C1F28;
 }
 
+.home {
+  display: flex;
+  justify-content: center;
+}
+
 .home-header {
   position: fixed;
   top: 100px;
+  color: cyan;
+}
+
+.home-icon {
+  position: fixed;
+  top: 200px;
+  font-size: 140px;
+  color: cyan;
 }

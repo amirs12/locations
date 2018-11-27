@@ -11,7 +11,7 @@ class Footer extends Component {
       <nav className="footer">
         <Link to="/locations/" className="footer-link">
           <div className="footer-button-box" style={{color: page === 'locations' ? 'cyan' : 'white'}}>
-            <i className="fas fa-map-marker-alt"></i>
+            <i className="fas fa-map-marker-alt footer-location-icon"></i>
             <div className="footer-locations">Locations</div>
           </div>  
         </Link>

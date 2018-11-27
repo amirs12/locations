@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
-import Category from '../Category/Category.js'
+import Category from './components/Category/Category.js'
 import AddCategory from '../../containers/AddCategory.js'
 
 import './Categories.css'

@@ -10,7 +10,7 @@ class Header extends Component {
 
     return (
       <div className="header">
-        <span className="">{name}</span>
+        <div>{name}</div>
         <div className="manage-button" onClick={() => this.props.addItem(page)}
             style={{color: selectedAction === 'Add' ? 'cyan' : 'white'}}
             >

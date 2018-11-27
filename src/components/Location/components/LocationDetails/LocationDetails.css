@@ -9,15 +9,11 @@
   color: white;
 }
 
-.location-details-row {
-  display: flex;
-  margin-bottom: 14px;
-}
-
 .details-property {
   display: flex;
-  width: 260px;
   flex-direction: column;
+  width: 260px;
+  margin-bottom: 8px;
 }
 
 .details-title {
@@ -34,7 +30,7 @@
 
 .close-button {
   width: 48px;
-  align-self: flex-end;
+  margin-top: 8px;
   border-radius: 5px;
   background-color: #292D3C;
   color: lightgray;

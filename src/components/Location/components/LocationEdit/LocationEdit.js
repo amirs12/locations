@@ -28,7 +28,7 @@ class LocationEdit extends Component {
             if (!inputName.value.trim() || 
                 !inputAddress.value.trim() ||
                 !inputCoordinates.value.trim() ||
-                !chosenCategories) {
+                chosenCategories.length < 0) {
               return
             }
             this.props.saveEditLocation(
@@ -57,7 +57,7 @@ class LocationEdit extends Component {
             <input ref={node => inputCoordinates = node} className="location-input" placeholder="Coordinates"/>
           </div>
           <div className="form-property">
-            <div className="choose-title">Assign a Category </div>  
+            <div className="choose-title">Choose a Category </div>  
             <ChooseCategory />
           </div>
           <div className="add-buttons">

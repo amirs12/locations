@@ -12,9 +12,10 @@ import {
 import './App.css';
 
 const Index = () => (
-  <div className="app">
+  <div className="home">
     <Header />
-    <h2 className="home-header">MyLocations App</h2>
+    <h1 className="home-header">MyLocations App</h1>
+    <i class="fas fa-map-marker-alt home-icon"></i>
     <Footer />
   </div>
 )

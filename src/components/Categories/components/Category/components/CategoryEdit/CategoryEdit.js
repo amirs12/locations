@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { saveEditCategory } from '../../../../Actions/CategoryActions.js'
+import { saveEditCategory } from '../../../../../../Actions/CategoryActions.js'
 
 import './CategoryEdit.css';
 

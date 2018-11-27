@@ -24,10 +24,11 @@ class ChooseCategory extends Component {
               </div>
             )}
           </div>
-          <button className="apply-button" 
-              onClick={(e) => {
-                e.preventDefault()
-                this.props.closeChooseCategory()}}
+          <button 
+            className="apply-button" 
+            onClick={(e) => {
+              e.preventDefault()
+              this.props.closeChooseCategory()}}
           >Apply</button>
         </div>
       )

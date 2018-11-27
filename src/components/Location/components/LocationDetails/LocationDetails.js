@@ -14,25 +14,21 @@ class LocationDetails extends Component {
 
       return (
         <div className="location-details">
-          <div className="location-details-row">
-            <div className="details-property">
-              <div className="details-title">Location Name</div>
-              <div className="details-text">{location.text}</div>
-            </div>
-            <div className="details-property">
-              <div className="details-title">Location Address</div>
-              <div className="details-text">{location.address}</div>
-            </div>
+          <div className="details-property">
+            <div className="details-title">Location Name</div>
+            <div className="details-text">{location.text}</div>
           </div>
-          <div className="location-details-row">
-            <div className="details-property">
-              <div className="details-title">Location Coordinates</div>
-              <div className="details-text">{location.coordinates}</div>
-            </div>
-            <div className="details-property">
-              <div className="details-title">Assigned Categories</div>
-              <div className="connectd-categories">{connectdCategories}</div>
-            </div>
+          <div className="details-property">
+            <div className="details-title">Location Address</div>
+            <div className="details-text">{location.address}</div>
+          </div>
+          <div className="details-property">
+            <div className="details-title">Location Coordinates</div>
+            <div className="details-text">{location.coordinates}</div>
+          </div>
+          <div className="details-property">
+            <div className="details-title">Assigned Categories</div>
+            <div className="connectd-categories">{connectdCategories}</div>
           </div>
           <button className="close-button" onClick={() => this.props.closeViewLocation(id)}>
             Close

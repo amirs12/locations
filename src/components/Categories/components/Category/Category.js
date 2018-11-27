@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import CategoryDetails from './components/CategoryDetails/CategoryDetails'
 import CategoryEdit from './components/CategoryEdit/CategoryEdit'
-import { selectCategoryItem } from '../../Actions/CategoryActions'
+import { selectCategoryItem } from '../../../../Actions/CategoryActions'
 
 import './Category.css';
 
 class Category extends Component {
   render() {
-    const { categories, selected, text, id } = this.props
+    const { categories, text, id } = this.props
     let detailsBox,
         editBox
 
@@ -27,7 +27,7 @@ class Category extends Component {
     return (
       <div className="category-item" 
            onClick={() => this.props.selectCategoryItem(id)}
-           style={{color: selected ? 'cyan' : 'white'}}
+           style={{color: categories[id].selected ? 'cyan' : 'white'}}
            >
         <div className="category-text">{text}</div>
         <div>{detailsBox}</div>
@@ -38,7 +38,6 @@ class Category extends Component {
 }
 
 Category.propTypes = {
-  selected: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired
 }
 

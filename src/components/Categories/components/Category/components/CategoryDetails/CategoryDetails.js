@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { closeViewCategory } from '../../../../Actions/CategoryActions.js'
+import { closeViewCategory } from '../../../../../../Actions/CategoryActions.js'
 
 import './CategoryDetails.css';
 
