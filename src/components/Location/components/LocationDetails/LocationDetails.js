@@ -30,8 +30,10 @@ class LocationDetails extends Component {
             <div className="details-title">Assigned Categories</div>
             <div className="connectd-categories">{connectdCategories}</div>
           </div>
-          <button className="close-button" onClick={() => this.props.closeViewLocation(id)}>
-            Close
+          <button 
+            className="close-button" 
+            onClick={() => this.props.closeViewLocation(id)}
+            >Close
           </button>
         </div>
       )

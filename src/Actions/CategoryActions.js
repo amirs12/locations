@@ -5,7 +5,7 @@ export const selectCategoryItem = (id) => ({
   id
 })
 
-let nextCategoryId = 1
+let nextCategoryId = 3
 export const saveCategory = text => ({
   type: 'SAVE_CATEGORY',
   id: nextCategoryId++,
@@ -24,6 +24,11 @@ export const closeViewCategory = (id) => ({
 export const saveEditCategory = (text, id) => ({
   type: 'SAVE_CATEGORY_EDIT',
   text,
+  id
+})
+
+export const closeEditCategory = (id) => ({
+  type: 'CLOSE_CATEGORY_EDIT',
   id
 })
 

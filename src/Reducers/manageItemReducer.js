@@ -2,13 +2,30 @@ const initialState = {
   locations: [],
   categories: [{
     id: 0, 
-    text: "hard coded category", 
+    text: "Home", 
     selected: false, 
     pendingCategory: false,
     filteredCategory: false,
     viewMode: false, 
     editMode: false
-  }],
+  }, {
+    id: 1, 
+    text: "Work", 
+    selected: false, 
+    pendingCategory: false,
+    filteredCategory: false,
+    viewMode: false, 
+    editMode: false
+  }, {
+    id: 2, 
+    text: "Restaurants", 
+    selected: false, 
+    pendingCategory: false,
+    filteredCategory: false,
+    viewMode: false, 
+    editMode: false
+  }
+],
   aCategorySelected: false,
   aLoactionSelected: false,
   selectedAction: '',
@@ -48,7 +65,7 @@ const manageItemReducer = (state = initialState, action) => {
         selectedAction: 'Add',
         addCategoryOpen: true,
         categories: state.categories.map(category => (
-          {...category, selected: false})
+          {...category, selected: false, viewMode: false, editMode: false})
         )
       }
     case 'SAVE_CATEGORY':
@@ -56,7 +73,7 @@ const manageItemReducer = (state = initialState, action) => {
         ...state,
         categories: 
           [...state.categories, 
-          {id: action.id, text: action.text, selected: false, editMode: false}]  
+          {id: action.id, text: action.text, selected: false}]  
       }
     case 'CLOSE_ADD_CATEGORY':
       return {
@@ -67,6 +84,7 @@ const manageItemReducer = (state = initialState, action) => {
     case 'VIEW_CATEGORY':
       return {
         ...state,
+        addCategoryOpen: false,
         selectedAction: 'View',
         categories: state.categories.map(category =>
           (category.selected === true)
@@ -87,11 +105,12 @@ const manageItemReducer = (state = initialState, action) => {
     case 'EDIT_CATEGORY':
       return {
         ...state,
+        addCategoryOpen: false,
         selectedAction: 'Edit',
         categories: state.categories.map(category =>
           (category.selected === true)
           ? {...category, editMode: true, viewMode: false}
-          : category 
+          : {...category, viewMode: false} 
         )  
       }    
     case 'SAVE_CATEGORY_EDIT':
@@ -104,6 +123,16 @@ const manageItemReducer = (state = initialState, action) => {
           : category 
         )
       }
+    case 'CLOSE_CATEGORY_EDIT':
+      return {
+        ...state,
+        selectedAction: '',
+        categories: state.categories.map(category =>
+          (category.id === action.id)
+          ? {...category, editMode: false}
+          : category
+        )
+      }  
     case 'DELETE_CATEGORY':
       return {
         ...state,

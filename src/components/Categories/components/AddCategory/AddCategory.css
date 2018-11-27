@@ -17,6 +17,10 @@
   width: 200px;
 }
 
+.category-input {
+  width: 250px;
+}
+
 .category-property {
   display: flex;
   width: 200px;

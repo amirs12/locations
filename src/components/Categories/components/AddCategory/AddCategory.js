@@ -24,7 +24,12 @@ class AddCategory extends Component {
         >
           <div className="category-property">
             <div className="category-title">Category Name</div>
-            <input ref={node => input = node} name="add-ctg" id="add-ctg" placeholder="Category Name" autoFocus/>
+            <input 
+              ref={node => input = node} 
+              className="category-input" 
+              placeholder="Category Name" 
+              autoFocus
+            />
           </div>
           <div className="add-category-buttons">
             <button className="save-button" type="submit">Save</button>

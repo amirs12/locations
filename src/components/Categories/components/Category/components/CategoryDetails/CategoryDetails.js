@@ -9,8 +9,15 @@ class CategoryDetails extends Component {
       const { text, id } = this.props
       return (
         <div className="category-details">
-          <div>{text}</div>
-          <button  className="done-button" onClick={() => this.props.closeViewCategory(id)}>Done</button>
+          <div className="details-property">
+            <div className="details-title">Location Name</div>
+            <div>{text}</div>
+          </div>  
+          <button 
+            className="done-button" 
+            onClick={() => this.props.closeViewCategory(id)}
+            >Close
+          </button>
         </div>
       )
     }  
