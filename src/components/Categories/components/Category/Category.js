@@ -29,7 +29,7 @@ class Category extends Component {
            onClick={() => this.props.selectCategoryItem(id)}
            style={{color: categories[id].selected ? 'cyan' : 'white'}}
            >
-        <div className="category-text">{text}</div>
+        <div className="category-name">{text}</div>
         <div>{detailsBox}</div>
         <div>{editBox}</div>    
       </div>

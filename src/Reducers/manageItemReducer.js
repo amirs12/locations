@@ -9,6 +9,7 @@ const initialState = {
     viewMode: false, 
     editMode: false
   }],
+  aCategorySelected: false,
   aLoactionSelected: false,
   selectedAction: '',
   addCategoryOpen: false,
@@ -22,21 +23,46 @@ const manageItemReducer = (state = initialState, action) => {
         ...state,
         addCategoryOpen: false,
         selectedAction: '',
+        aCategorySelected: !state.aCategorySelected,
         categories: state.categories.map(category =>
           (category.id === action.id)
-          ? {...category, selected: true}
+          ? {...category, selected: !category.selected}
           : {...category, selected: false, viewMode: false, editMode: false} 
         )  
       }
-    case 'DELETE_CATEGORY':
+    case 'SELECT_LOCATION_ITEM':
+      return {
+        ...state,
+        addLocationOpen: false,
+        selectedAction: '',
+        aLoactionSelected: !state.aLoactionSelected,
+        locations: state.locations.map(location =>
+          (location.id === action.id)
+          ? {...location, selected: !location.selected}
+          : {...location, selected: false, editMode: false, viewMode: false} 
+        )  
+      }
+    case 'OPEN_ADD_CATEGORY':
+      return {
+        ...state,
+        selectedAction: 'Add',
+        addCategoryOpen: true,
+        categories: state.categories.map(category => (
+          {...category, selected: false})
+        )
+      }
+    case 'SAVE_CATEGORY':
+      return {
+        ...state,
+        categories: 
+          [...state.categories, 
+          {id: action.id, text: action.text, selected: false, editMode: false}]  
+      }
+    case 'CLOSE_ADD_CATEGORY':
       return {
         ...state,
         selectedAction: '',
-        categories: state.categories.map(category =>
-          (category.selected === true)
-          ? {...category, deleted: true}
-          : category
-        )
+        addCategoryOpen: false
       }  
     case 'VIEW_CATEGORY':
       return {
@@ -78,28 +104,16 @@ const manageItemReducer = (state = initialState, action) => {
           : category 
         )
       }
-    case 'OPEN_ADD_CATEGORY':
-      return {
-        ...state,
-        selectedAction: 'Add',
-        addCategoryOpen: true,
-        categories: state.categories.map(category => (
-          {...category, selected: false})
-        )
-      }
-    case 'SAVE_CATEGORY':
-      return {
-        ...state,
-        categories: 
-          [...state.categories, 
-          {id: action.id, text: action.text, selected: false, editMode: false}]  
-      }
-    case 'CLOSE_ADD_CATEGORY':
+    case 'DELETE_CATEGORY':
       return {
         ...state,
         selectedAction: '',
-        addCategoryOpen: false
-      }  
+        categories: state.categories.map(category =>
+          (category.selected === true)
+          ? {...category, deleted: true}
+          : category
+        )
+      }
     case 'OPEN_ADD_LOCATION':
       return {
         ...state,
@@ -212,18 +226,6 @@ const manageItemReducer = (state = initialState, action) => {
           ? {...location, deleted: true}
           : location
         )
-      }
-    case 'SELECT_LOCATION_ITEM':
-      return {
-        ...state,
-        selectedAction: '',
-        addLocationOpen: false,
-        aLoactionSelected: !state.aLoactionSelected,
-        locations: state.locations.map(location =>
-          (location.id === action.id)
-          ? {...location, selected: !location.selected}
-          : {...location, selected: false, editMode: false, viewMode: false} 
-        )  
       }   
     case 'PENDING_CATEGORY_ITEM':
       return {
