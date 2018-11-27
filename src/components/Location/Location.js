@@ -9,7 +9,7 @@ import './Location.css';
 
 class Location extends Component {
   render() {
-    const { locations, selected, text, id } = this.props
+    const { locations, text, id } = this.props
     let detailsBox,
         editBox
     let location = locations[id]
@@ -31,9 +31,9 @@ class Location extends Component {
     return (
       <div className="location-item" 
            onClick={() => this.props.selectLocationItem(id)}
-           style={{color: selected ? 'red' : 'white'}}
+           style={{color: locations[id].selected ? 'cyan' : 'white'}}
            >
-        <div>{text}</div>
+        <div className="location-name">{text}</div>
         <div>{detailsBox}</div>
         <div>{editBox}</div>    
       </div>
@@ -47,7 +47,7 @@ Location.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  addLocationOpen: state.categoryItemReducer.addLocationOpen,
+  addLocationOpen: state.manageItemReducer.addLocationOpen,
 })
 
 export default connect(mapStateToProps, { selectLocationItem })(Location)

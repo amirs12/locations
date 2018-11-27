@@ -8,13 +8,15 @@ class SortContainer extends Component {
   render() {
     return (
       <div className="sort-container">
-        <span className="sort-title">Show: </span>
-        <FilterLink filter={SortFilters.SHOW_BY_ABC}>
-            Alphabetical
-        </FilterLink>
-        <FilterLink filter={SortFilters.SHOW_BY_CATEGORY}>
-            By Category
-        </FilterLink> 
+        <span className="sort-title">Sort: </span>
+        <div className="sort-links">
+          <FilterLink filter={SortFilters.SHOW_BY_CATEGORY}>
+              By Category
+          </FilterLink> 
+          <FilterLink filter={SortFilters.SHOW_BY_ABC}>
+              Alphabetical
+          </FilterLink>
+        </div>
       </div>  
     );
   }  

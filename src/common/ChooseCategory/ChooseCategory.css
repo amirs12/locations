@@ -1,3 +1,16 @@
+.choose-category {
+  display: flex;
+}
+
 .choose-box {
-  border: solid #5B6DCD 1px;
+  border: solid 1px white;
+  margin-bottom: 10px;
+}
+
+.apply-button {
+  width: 50px;
+  border-radius: 5px;
+  margin-bottom: 4px;
+  background-color: #292D3C;
+  color: white;
 }

@@ -45,7 +45,7 @@ class Locations extends Component {
         <article className="locations-box">
           <SortContainer />
           <FilterContainer />
-          <div>
+          <div className="add-location-box">
             {addLocationBox}
           </div>
           <div>
@@ -68,9 +68,9 @@ Locations.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  addLocationOpen: state.categoryItemReducer.addLocationOpen,
+  addLocationOpen: state.manageItemReducer.addLocationOpen,
   visibilityFilterState: state.visibilityFilterReducer.visibilityFilterState,
-  categoryTofilter: state.categoryItemReducer.categoryTofilter
+  categoryTofilter: state.manageItemReducer.categoryTofilter
 })
 
 export default connect(mapStateToProps)(Locations)

@@ -27,7 +27,7 @@ class Category extends Component {
     return (
       <div className="category-item" 
            onClick={() => this.props.selectCategoryItem(id)}
-           style={{color: selected ? 'red' : 'white'}}
+           style={{color: selected ? 'cyan' : 'white'}}
            >
         <div className="category-text">{text}</div>
         <div>{detailsBox}</div>
@@ -43,7 +43,7 @@ Category.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  addCategoryOpen: state.categoryItemReducer.addCategoryOpen,
+  addCategoryOpen: state.manageItemReducer.addCategoryOpen,
 })
 
 export default connect(mapStateToProps, { selectCategoryItem })(Category)

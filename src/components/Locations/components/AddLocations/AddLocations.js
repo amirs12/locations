@@ -6,16 +6,16 @@ import ChooseCategory from '../../../../common/ChooseCategory/ChooseCategory.js'
 import './AddLocations.css';
 
 class AddLocations extends Component {
-  render() {
-    const { chooseCategoryOpen, categories } = this.props
-    let inputName,
-        inputAddress,
-        inputCoordinates,
-        chooseCategoryBox
+  componentWillMount() {
+    this.props.openChooseCategory()
+  }
 
-    if (chooseCategoryOpen === true) {
-      chooseCategoryBox = <ChooseCategory />
-    }
+  render() {
+    const { categories } = this.props
+    let inputName = '',
+        inputAddress,
+        inputCoordinates
+
     return (
       <div>
         <form className="location-form" onSubmit={e => {
@@ -42,21 +42,32 @@ class AddLocations extends Component {
           inputAddress.value = ''
           inputCoordinates.value = ''
         }}>
-          <input ref={node => inputName = node} className="location-input" placeholder="Location Name" autoFocus/>
-          <input ref={node => inputAddress = node} className="location-input" placeholder="Address"/>
-          <input ref={node => inputCoordinates = node} className="location-input" placeholder="Coordinates"/>
-          <div className="choose-category">
-            <div className="choose-title">Choose a Category </div>  
-            <button className="choose-button" 
+            <div className="form-property">
+              <div className="property-title">Location Name</div>
+              <input ref={node => inputName = node} className="location-input" placeholder="Location Name" autoFocus/>
+            </div>
+            <div className="form-property">
+              <div className="property-title">Address</div>
+              <input ref={node => inputAddress = node} className="location-input" placeholder="Address"/>
+            </div>
+            <div className="form-property">
+              <div className="property-title">Coordinates</div>
+              <input ref={node => inputCoordinates = node} className="location-input" placeholder="Coordinates"/>
+            </div>
+            <div className="form-property">
+              <div className="choose-title">Assign a Category </div>  
+              <ChooseCategory />
+            </div>
+          <div className="add-buttons">
+            <button className="save-button" type="submit">Save</button>
+            <button className="cancel-button" 
                     onClick={e => {
                       e.preventDefault()
-                      this.props.openChooseCategory()
+                      this.props.closeAddLocation()
                     }}
-              > + 
+                  >Cancel
             </button>
-            {chooseCategoryBox}
-          </div>
-          <button className="save-button" type="submit">Save</button>
+          </div>  
         </form>
       </div>
     )
@@ -64,7 +75,7 @@ class AddLocations extends Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.categoryItemReducer.categories,
+  categories: state.manageItemReducer.categories,
   chooseCategoryOpen: state.locationItemReducer.chooseCategoryOpen
 })
 

@@ -5,7 +5,7 @@ export const selectLocationItem = (id) => ({
 
 let nextLocationId = 0
 export const saveLocation = (text, address, coordinates, chosenCategories) => ({
-  type: 'ADD_LOCATION',
+  type: 'SAVE_LOCATION',
   id: nextLocationId++,
   text,
   address,

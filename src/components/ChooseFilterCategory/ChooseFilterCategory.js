@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { closefilterBox, savefilteredCategories } from '../../Actions/Actions.js'
 
-//import './ChooseFilterCategory.css';
+import './ChooseFilterCategory.css';
 
 class ChooseFilterCategory extends Component {
     render() {
@@ -13,7 +13,7 @@ class ChooseFilterCategory extends Component {
           <div className="choose-box">
             {categories.map(category =>
               <div key={category.id} 
-                   style={{color: category.pendingCategory ? 'red' : 'black'}}
+                   style={{color: category.pendingCategory ? 'cyan' : 'white'}}
                    onClick={(e) => {
                      e.preventDefault()
                      this.props.savefilteredCategories(categories, category.id)
@@ -30,7 +30,7 @@ class ChooseFilterCategory extends Component {
   }
   
   const mapStateToProps = state => ({
-    categories: state.categoryItemReducer.categories
+    categories: state.manageItemReducer.categories
   })
   
   export default connect(mapStateToProps, { closefilterBox, savefilteredCategories })(ChooseFilterCategory)

@@ -2,10 +2,16 @@
   display: flex;
   align-items: center;
   padding-left: 4px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.sort-links {
+  display: flex;
+  justify-content: space-around;
 }
 
 .sort-title {
-  margin-right: 2px;
-  font-size: 14px;
+  margin-right: 23px;
   color: white;
 }

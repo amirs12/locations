@@ -1,32 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setVisibilityFilter, openfilterBox } from '../../Actions/Actions.js'
+import { setVisibilityFilter, openfilterBox } from '../../../../../../Actions/Actions.js'
 
 import './CategoryLink.css';
 
 class CategoryLink extends Component {
   render() {
-    const { filter } = this.props
+    const { filter, visibilityFilterState } = this.props
+    const active = visibilityFilterState  === 'FILTER_BY_CATEGORY'
 
     return (
       <div className="category-link">
-        <button
+        <div
+          className="by-category"
           onClick={() => {
             this.props.setVisibilityFilter(filter)
             this.props.openfilterBox()
           }}
           style={{
-              marginLeft: '4px',
+            borderBottomColor: active ? 'cyan' : 'white',
+            color: active ? 'cyan' : 'white'
           }}
           >By Category
-        </button>
+        </div>
       </div>
     )
   }  
 }
 
 const mapStateToProps = state => ({
-//  active: state.visibilityFilterReducer.visibilityFilterState === 'FILTER_BY_CATEGORY'
+  visibilityFilterState: state.visibilityFilterReducer.visibilityFilterState
 })
 
 export default connect(mapStateToProps, { setVisibilityFilter, openfilterBox })(CategoryLink)

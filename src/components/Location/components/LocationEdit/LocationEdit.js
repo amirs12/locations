@@ -64,7 +64,7 @@ class LocationEdit extends Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.categoryItemReducer.categories,
+  categories: state.manageItemReducer.categories,
   chooseCategoryOpen: state.locationItemReducer.chooseCategoryOpen
 })
 

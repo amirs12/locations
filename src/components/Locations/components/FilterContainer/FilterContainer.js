@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import FilterAllLink from '../../../FilterAllLink/FilterAllLink.js'
-import CategoryLink from '../../../CategoryLink/CategoryLink.js'
+import FilterAllLink from './components/FilterAllLink/FilterAllLink.js'
+import CategoryLink from './components/CategoryLink/CategoryLink.js'
 import ChooseFilterCategory from '../../../ChooseFilterCategory/ChooseFilterCategory.js'
 
 import './FilterContainer.css';
@@ -16,10 +16,12 @@ class FilterContainer extends Component {
 
     return (
       <div className="filter-container">
-        <span className="filter-title">Filter: </span>
-        <FilterAllLink filter={"FILTER_ALL"}/>
-        <CategoryLink filter={"FILTER_BY_CATEGORY"}/>
-        <div>{filterCategoryBox}</div>
+        <div className="filter-options">
+          <span className="filter-title">Filter: </span>
+          <CategoryLink filter={"FILTER_BY_CATEGORY"}/>
+          <FilterAllLink filter={"FILTER_ALL"}/>
+        </div>  
+        <div className="filter-category-box">{filterCategoryBox}</div>
       </div>
     );
   }  

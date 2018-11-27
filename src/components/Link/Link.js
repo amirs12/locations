@@ -8,16 +8,16 @@ class Link extends Component {
     const { active, children, onClick } = this.props
 
     return (
-      <div className="link">
-        <button
-          onClick={onClick}
-          disabled={active}
-          style={{
-              marginLeft: '4px',
-          }}
-        >
-          {children}
-        </button>
+      <div className="link"
+        onClick={onClick}
+        disabled={active}
+        style={{
+            marginRight: '16px',
+            borderBottomColor: active ? 'cyan' : 'white',
+            color: active ? 'cyan' : 'white'
+        }}
+      >
+        {children}
       </div>
     )
   }  

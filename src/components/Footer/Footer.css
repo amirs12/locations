@@ -10,12 +10,14 @@
 }
 
 .footer-link {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   text-decoration: none;
   color: white;
+}
+
+.footer-button-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .fa-map-marker-alt {

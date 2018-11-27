@@ -7,7 +7,7 @@ export const selectCategoryItem = (id) => ({
 
 let nextCategoryId = 1
 export const saveCategory = text => ({
-  type: 'ADD_CATEGORY',
+  type: 'SAVE_CATEGORY',
   id: nextCategoryId++,
   text
 })

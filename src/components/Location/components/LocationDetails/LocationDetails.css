@@ -1,11 +1,30 @@
 .location-details {
   display: flex;
   flex-direction: column;
+  width: 360px;
+  margin-top: 6px;
+  margin-left: 10px;
+  padding: 0px 20px 12px 0px;
+  border-bottom: solid 1px #292D3C;
   color: white;
 }
 
-.done-button {
-  width: 50px;
+.location-details-row {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.details-property {
+  display: flex;
+  width: 260px;
+  flex-direction: column;
+}
+
+.details-title {
+  margin-right: 20px;
+  padding-bottom: 1px;
+  font-size: 13px;
+  color: lightgray;
 }
 
 .connectd-categories {
@@ -13,10 +32,10 @@
   flex-direction: column;
 }
 
-.details-property {
-  display: flex;
-}
-
-.details-title {
-  margin-right: 20px;
+.close-button {
+  width: 48px;
+  align-self: flex-end;
+  border-radius: 5px;
+  background-color: #292D3C;
+  color: lightgray;
 }

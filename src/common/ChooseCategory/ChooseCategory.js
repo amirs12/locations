@@ -14,21 +14,28 @@ class ChooseCategory extends Component {
           <div className="choose-box">
             {categories.map(category =>
               <div key={category.id} 
-                   style={{color: category.pendingCategory ? 'red' : 'black'}}
-                   onClick={() => this.props.pendingCategoryChoice(category.id)}
+                   style={{color: category.pendingCategory ? 'cyan' : 'white'}}
+                   onClick={(e) => {
+                     e.preventDefault()
+                     this.props.pendingCategoryChoice(category.id)
+                   }}
                    >
                 <div>{category.text}</div>
               </div>
             )}
           </div>
-          <button className="done-button" onClick={() => this.props.closeChooseCategory()}>Done</button>
+          <button className="apply-button" 
+              onClick={(e) => {
+                e.preventDefault()
+                this.props.closeChooseCategory()}}
+          >Apply</button>
         </div>
       )
     }  
   }
   
   const mapStateToProps = state => ({
-    categories: state.categoryItemReducer.categories
+    categories: state.manageItemReducer.categories
   })
   
   export default connect(mapStateToProps, { closeChooseCategory, pendingCategoryChoice })(ChooseCategory)

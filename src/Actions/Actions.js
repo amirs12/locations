@@ -39,23 +39,6 @@ export const closefilterBox = () => ({
   type: 'CLOSE_FILTER_BOX'
 })
 
-export const viewItem = page => {
-  switch (page) {
-    case 'categories':
-      return {
-        type: 'VIEW_CATEGORY'
-      }
-    case 'locations':
-      return { 
-        type: 'VIEW_LOCATION'
-      }    
-    default:
-      return {
-        type: 'home'
-      }
-  }
-}
-
 export const addItem = page => {
   switch (page) {
     case 'categories':
@@ -73,21 +56,21 @@ export const addItem = page => {
   }
 }
 
-export const deleteItem = page => {
+export const viewItem = page => {
   switch (page) {
     case 'categories':
       return {
-        type: 'DELETE_CATEGORY'
+        type: 'VIEW_CATEGORY'
       }
     case 'locations':
       return { 
-        type: 'DELETE_LOCATION'
+        type: 'VIEW_LOCATION'
       }    
     default:
       return {
         type: 'home'
       }
-  } 
+  }
 }
 
 export const editItem = page => {
@@ -106,6 +89,23 @@ export const editItem = page => {
       }
   }
 }  
+
+export const deleteItem = page => {
+  switch (page) {
+    case 'categories':
+      return {
+        type: 'DELETE_CATEGORY'
+      }
+    case 'locations':
+      return { 
+        type: 'DELETE_LOCATION'
+      }    
+    default:
+      return {
+        type: 'home'
+      }
+  } 
+}
 
 export const selectPageItem = page => {
   return {

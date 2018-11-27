@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import categoryItemReducer from './categoryItemReducer'
+import manageItemReducer from './manageItemReducer'
 import locationItemReducer from './locationItemReducer'
 import visibilityFilterReducer from './visibilityFilterReducer'
 
 const rootReducer = combineReducers({
-  categoryItemReducer,
+  manageItemReducer,
   locationItemReducer,
   visibilityFilterReducer
 })
