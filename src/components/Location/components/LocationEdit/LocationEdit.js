@@ -66,7 +66,7 @@ class LocationEdit extends Component {
               className="cancel-button" 
               onClick={e => {
                 e.preventDefault()
-                this.props.closeAddLocation()
+                this.props.closeEditLocation(id)
               }}
             >
               Cancel
