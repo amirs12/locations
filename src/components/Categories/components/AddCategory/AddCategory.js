@@ -49,7 +49,7 @@ class AddCategory extends Component {
 }
 
 const mapStateToProps = state => ({
-//  addBoxOpen: state.categoryItemReducer.addBoxOpen
+ 
 })
 
 export default connect(mapStateToProps, { saveCategory, closeAddCategory })(AddCategory)

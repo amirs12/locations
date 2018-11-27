@@ -11,31 +11,33 @@ class Header extends Component {
     return (
       <div className="header">
         <div>{name}</div>
-        <div className="manage-button" onClick={() => this.props.addItem(page)}
-            style={{color: selectedAction === 'Add' ? 'cyan' : 'white'}}
-            >
-          <i className="fas fa-plus-square"></i>
-          <div className="manage-button-title">Add</div>
-        </div>
-        <div className="manage-button" 
-            onClick={() => {this.props.viewItem(page)}}
-            style={{color: selectedAction === 'View' ? 'cyan' : 'white'}}        
-            >
-          <i className="fas fa-eye"></i>
-          <div className="manage-button-title">View</div>
-        </div>
-        <div className="manage-button" onClick={() => this.props.editItem(page)}
-            style={{color: selectedAction === 'Edit' ? 'cyan' : 'white'}}
-            >
-          <i className="fas fa-pencil-alt"></i>
-          <div className="manage-button-title">Edit</div>
-        </div>
-        <div className="manage-button" onClick={() => this.props.deleteItem(page)}
-            style={{color: selectedAction === 'Delete' ? 'cyan' : 'white'}}
-            >
-          <i className="fas fa-trash-alt"></i>
-          <div className="manage-button-title">Delete</div>
-        </div>
+        <div className="header-buttons">
+          <div className="manage-button" onClick={() => this.props.addItem(page)}
+              style={{color: selectedAction === 'Add' ? 'cyan' : 'white'}}
+              >
+            <i className="fas fa-plus-square"></i>
+            <div className="manage-button-title">Add</div>
+          </div>
+          <div className="manage-button" 
+              onClick={() => {this.props.viewItem(page)}}
+              style={{color: selectedAction === 'View' ? 'cyan' : 'white'}}        
+              >
+            <i className="fas fa-eye"></i>
+            <div className="manage-button-title">View</div>
+          </div>
+          <div className="manage-button" onClick={() => this.props.editItem(page)}
+              style={{color: selectedAction === 'Edit' ? 'cyan' : 'white'}}
+              >
+            <i className="fas fa-pencil-alt"></i>
+            <div className="manage-button-title">Edit</div>
+          </div>
+          <div className="manage-button" onClick={() => this.props.deleteItem(page)}
+              style={{color: selectedAction === 'Delete' ? 'cyan' : 'white'}}
+              >
+            <i className="fas fa-trash-alt"></i>
+            <div className="manage-button-title">Delete</div>
+          </div>
+        </div>  
       </div>
     )
   }

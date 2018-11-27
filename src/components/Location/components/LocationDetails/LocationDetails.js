@@ -40,8 +40,6 @@ class LocationDetails extends Component {
     }  
   }
   
-  const mapStateToProps = state => ({
-  //  addBoxOpen: state.categoryItemReducer.addBoxOpen
-  })
+  const mapStateToProps = state => ({})
   
   export default connect(mapStateToProps, { closeViewLocation })(LocationDetails)

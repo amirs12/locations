@@ -7,7 +7,7 @@ import './CategoryEdit.css';
 class CategoryEdit extends Component {
     render() {
         let input
-        const { text, id } = this.props
+        const { id } = this.props
       
       return (
         <div className="category-edit">
@@ -50,7 +50,7 @@ class CategoryEdit extends Component {
   }
   
   const mapStateToProps = state => ({
-  //  addBoxOpen: state.categoryItemReducer.addBoxOpen
+    addBoxOpen: state.categoryItemReducer.addBoxOpen
   })
   
   export default connect(mapStateToProps, { saveEditCategory, closeEditCategory })(CategoryEdit)

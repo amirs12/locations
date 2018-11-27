@@ -16,10 +16,7 @@ class Location extends Component {
 
     if (location.deleted === true) {
       return <div></div>
-    } else {
-/*      detailsBox = locations.filter(location =>
-        (location.id === id)
-      )*/
+    } else { 
       if (location.viewMode === true) {
         detailsBox = <LocationDetails location={location} id={id}/>
       }
@@ -30,7 +27,10 @@ class Location extends Component {
 
     return (
       <div className="location-item" 
-           onClick={() => this.props.selectLocationItem(id)}
+           onClick={() => {
+             this.props.selectLocationItem(id)
+             window.navigator.vibrate(300)
+           }} 
            style={{color: locations[id].selected ? 'cyan' : 'white'}}
            >
         <div className="location-name">{text}</div>
