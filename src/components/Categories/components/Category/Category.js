@@ -26,7 +26,10 @@ class Category extends Component {
 
     return (
       <div className="category-item" 
-           onClick={() => this.props.selectCategoryItem(id)}
+           onClick={() => {
+            this.props.selectCategoryItem(id)
+            window.navigator.vibrate(300)
+          }}
            style={{color: categories[id].selected ? 'cyan' : 'white'}}
            >
         <div className="category-name">{text}</div>
