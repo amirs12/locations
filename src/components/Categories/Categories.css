@@ -1,3 +1,8 @@
+.categories {
+  position: absolute;
+  height: 100%;
+}
+
 .categories-box {
   position: relative;
   top: 50px;

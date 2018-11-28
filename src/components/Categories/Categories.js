@@ -17,7 +17,7 @@ class Categories extends Component {
     }
 
     return (
-      <div>
+      <div className="">
         <Header page="categories" name="My Categories"/>
         <article className="categories-box">
           {addCategoryBox}
@@ -30,7 +30,9 @@ class Categories extends Component {
             )}
           </div>
         </article>
+        <div className="categories">
         <Footer page="categories"/>
+        </div>
       </div>
     )
   }
