@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setVisibilitySort, openSortBox } from '../../../../../../Actions/Actions.js'
+import { setVisibilitySort } from '../../../../../../Actions/Actions.js'
 
 import './SortCategory.css';
 
@@ -27,4 +27,4 @@ const mapStateToProps = state => ({
     sortState: state.visibilityFilterReducer.sortState
 })
 
-export default connect(mapStateToProps, { setVisibilitySort, openSortBox })(SortCategory)
+export default connect(mapStateToProps, { setVisibilitySort })(SortCategory)

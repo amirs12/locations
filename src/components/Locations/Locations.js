@@ -42,14 +42,15 @@ class Locations extends Component {
       
       let locationsByCategory = []
       let byCategoryBuilder = sortedCategories.map(category => {
-        let currentGroup = visibleLocaiotns.fliter(location => 
+        let currentGroup = sortedLocations.filter(location => 
           (location.chosenCategories.indexOf(category.text) > -1 
           && locationsByCategory.indexOf(location) < 0
           )
         )
-        locationsByCategory.concat(currentGroup)
+        locationsByCategory = [...locationsByCategory, ...currentGroup]
         return ''
       })
+      console.log(locationsByCategory)
       visibleLocaiotns = locationsByCategory.map(location =>
         <Location
           key={location.id} locations={locations} 
@@ -99,7 +100,7 @@ Locations.propTypes = {
 
 const mapStateToProps = state => ({
   addLocationOpen: state.manageItemReducer.addLocationOpen,
-  sortState: state.manageItemReducer.sortState,
+  sortState: state.visibilityFilterReducer.sortState,
   filterState: state.visibilityFilterReducer.filterState,
   categoryTofilter: state.manageItemReducer.categoryTofilter,
   categories: state.manageItemReducer.categories

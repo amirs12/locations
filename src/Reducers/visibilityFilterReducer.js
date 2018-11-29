@@ -2,7 +2,6 @@ const initialState = {
   filterState: "FILTER_ALL",
   filterCategoryOpen: false,
   sortState: "SHOW_BY_ABC",
-  sortCategoryOpen: false,
   selectedPage: 'home'
 }
 
