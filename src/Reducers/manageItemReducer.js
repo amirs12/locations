@@ -30,7 +30,8 @@ const initialState = {
   aLoactionSelected: false,
   selectedAction: '',
   addCategoryOpen: false,
-  addLocationOpen: false
+  addLocationOpen: false,
+  categoryTofilter: ''
 }
 
 const manageItemReducer = (state = initialState, action) => {

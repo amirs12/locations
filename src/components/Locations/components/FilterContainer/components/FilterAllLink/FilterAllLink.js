@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import { setVisibilityFilter, closefilterBox } from '../../../../../../Actions/Actions.js'
 
 import './FilterAllLink.css'
 
 class FilterAllLink extends Component {
   render() {
-    const { visibilityFilterState, filter } = this.props
-    const active = visibilityFilterState  === 'FILTER_ALL'
+    const { filterState, filter } = this.props
+    const active = filterState  === 'FILTER_ALL'
 
     return (
       <div className="filter-all-link">
@@ -30,12 +29,8 @@ class FilterAllLink extends Component {
   }  
 }
 
-FilterAllLink.propTypes = {
-  active: PropTypes.bool.isRequired
-}
-
 const mapStateToProps = state => ({
-  visibilityFilterState: state.visibilityFilterReducer.visibilityFilterState
+  filterState: state.visibilityFilterReducer.filterState
 })
 
 export default connect(mapStateToProps, { setVisibilityFilter, closefilterBox })(FilterAllLink)

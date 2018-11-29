@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { closefilterBox, savefilteredCategories } from '../../../../../../Actions/Actions.js'
+import { closefilterBox, savefilteredCategories, setVisibilityFilter } from '../../../../../../Actions/Actions.js'
 
 import './ChooseFilterCategory.css';
 
@@ -17,6 +17,7 @@ class ChooseFilterCategory extends Component {
                     e.preventDefault()
                     this.props.savefilteredCategories(categories, category.id)
                     this.props.closefilterBox()
+                    this.props.setVisibilityFilter('FILTER_BY_CATEGORY')
                   }}
                   >
               <div className="category-options">{category.text}</div>
@@ -31,4 +32,4 @@ class ChooseFilterCategory extends Component {
     categories: state.manageItemReducer.categories
   })
   
-  export default connect(mapStateToProps, { closefilterBox, savefilteredCategories })(ChooseFilterCategory)
+  export default connect(mapStateToProps, { closefilterBox, savefilteredCategories, setVisibilityFilter })(ChooseFilterCategory)

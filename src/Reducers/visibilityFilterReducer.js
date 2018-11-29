@@ -1,5 +1,5 @@
 const initialState = {
-  filterState: "SHOW_ALL",
+  filterState: "FILTER_ALL",
   filterCategoryOpen: false,
   sortState: "SHOW_BY_ABC",
   sortCategoryOpen: false,
@@ -28,16 +28,6 @@ const visibilityFilterReducer = (state = initialState, action) => {
         ...state,
         filterCategoryOpen: false
       }
-    case 'OPEN_SORT_BOX':
-      return {
-        ...state,
-        sortCategoryOpen: true
-      }
-    case 'CLOSE_SORT_BOX':
-      return {
-        ...state,
-        sortCategoryOpen: false
-      }  
     case 'SELECT_PAGE':
       return {
         ...state,

@@ -16,8 +16,8 @@ class Locations extends Component {
       locations, 
       categories, 
       addLocationOpen, 
-      visibilitySortState, 
-      visibilityFilterState, 
+      sortState, 
+      filterState, 
       categoryTofilter 
     } = this.props
     let addLocationBox
@@ -26,39 +26,42 @@ class Locations extends Component {
       addLocationBox = <AddLocations />
     }
 
-    let visibleLocaiotns = locations.sort(
-      (a, b) => a.text.localeCompare(b.text, 'en', {'sensitivity': 'base'})
-    )
+    let sortedLocations = locations.sort(
+      (a, b) => a.text.localeCompare(b.text, 'en', {'sensitivity': 'base'}))
+    let visibleLocaiotns = sortedLocations.map(location =>
+        <Location
+          key={location.id} locations={locations} 
+          {...location}
+        />
+    )  
 
-    if (visibilitySortState === "SORT_BY_CATEGORY") {
+    if (sortState === "SHOW_BY_CATEGORY") {
       let sortedCategories = categories.sort(
         (a, b) => a.text.localeCompare(b.text, 'en', {'sensitivity': 'base'})
       )
+      
       let locationsByCategory = []
-      for (let category of sortedCategories) {
-        locationsByCategory = 
-          [...locationsByCategory, 
-          visibleLocaiotns.fliter(location => 
-            (location.chosenCategories.indexOf(category.text) > -1 
-            && locationsByCategory.indexOf(location) < 0
-            )
+      let byCategoryBuilder = sortedCategories.map(category => {
+        let currentGroup = visibleLocaiotns.fliter(location => 
+          (location.chosenCategories.indexOf(category.text) > -1 
+          && locationsByCategory.indexOf(location) < 0
           )
-          ]
-      }
-      visibleLocaiotns = locationsByCategory
+        )
+        locationsByCategory.concat(currentGroup)
+        return ''
+      })
+      visibleLocaiotns = locationsByCategory.map(location =>
+        <Location
+          key={location.id} locations={locations} 
+          {...location}
+        />
+      )  
     }
 
-    if (visibilityFilterState === "FILTER_BY_CATEGORY") {
-      visibleLocaiotns.filter(location =>
+    if (filterState === "FILTER_BY_CATEGORY") {
+      visibleLocaiotns = sortedLocations.filter(location =>
         (location.chosenCategories.indexOf(categoryTofilter) > -1)
-        ).map(location =>
-          <Location
-            key={location.id} locations={locations} 
-            {...location}
-          />
-        )
-    } else {
-      visibleLocaiotns = locations.map(location =>
+      ).map(location =>
         <Location
           key={location.id} locations={locations} 
           {...location}
@@ -96,8 +99,8 @@ Locations.propTypes = {
 
 const mapStateToProps = state => ({
   addLocationOpen: state.manageItemReducer.addLocationOpen,
-  visibilitySortState: state.manageItemReducer.visibilitySortState,
-  visibilityFilterState: state.visibilityFilterReducer.visibilityFilterState,
+  sortState: state.manageItemReducer.sortState,
+  filterState: state.visibilityFilterReducer.filterState,
   categoryTofilter: state.manageItemReducer.categoryTofilter,
   categories: state.manageItemReducer.categories
 })

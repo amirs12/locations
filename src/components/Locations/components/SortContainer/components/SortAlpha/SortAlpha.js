@@ -1,41 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { setVisibilityFilter, closefilterBox } from '../../../../../../Actions/Actions.js'
+import { setVisibilitySort } from '../../../../../../Actions/Actions.js'
 
 import './SortAlpha.css'
 
 class SortAlpha extends Component {
   render() {
-    const { visibilityFilterState, filter } = this.props
-    const active = visibilityFilterState  === 'FILTER_ALL'
+    const { filter, sortState } = this.props
+    const active = sortState  === 'SHOW_BY_ABC'
 
     return (
-      <div className="sort-alpha">
-        <div
-          className="by-all" 
-          onClick={() => {
-            this.props.setVisibilityFilter(filter)
-            this.props.closefilterBox()
-          }}
-          disabled={active}
-          style={{
-            borderBottomColor: active ? 'cyan' : 'white',
-            color: active ? 'cyan' : 'white'
-          }}
-          >All
-        </div>
+      <div
+        className="sort-alpha"
+        onClick={() => this.props.setVisibilitySort(filter)}
+        style={{
+          borderBottomColor: active ? 'cyan' : 'white',
+          color: active ? 'cyan' : 'white'
+        }}
+        >Alphabetical
       </div>
     )
-  }  
-}
-
-SortAlpha.propTypes = {
-  active: PropTypes.bool.isRequired
+  } 
 }
 
 const mapStateToProps = state => ({
-  visibilityFilterState: state.visibilityFilterReducer.visibilityFilterState
+    sortState: state.visibilityFilterReducer.sortState
 })
 
-export default connect(mapStateToProps, { setVisibilityFilter, closefilterBox })(SortAlpha)
+export default connect(mapStateToProps, { setVisibilitySort })(SortAlpha)

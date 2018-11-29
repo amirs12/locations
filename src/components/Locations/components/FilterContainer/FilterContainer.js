@@ -18,7 +18,7 @@ class FilterContainer extends Component {
       <div className="filter-container">
         <div className="filter-options">
           <span className="filter-title">Filter: </span>
-          <CategoryLink filter={"FILTER_BY_CATEGORY"}/>
+          <CategoryLink />
           <FilterAllLink filter={"FILTER_ALL"}/>
         </div>  
         <div>{filterCategoryBox}</div>

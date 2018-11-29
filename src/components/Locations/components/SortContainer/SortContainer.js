@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import SortCategory from './components/SortCategory/SortCategory.js'
 import SortAlpha from './components/SortAlpha/SortAlpha.js'
 import { SortFilters } from '../../../../Actions/Actions.js'
@@ -24,8 +23,4 @@ class SortContainer extends Component {
   }  
 }
 
-const mapStateToProps = state => ({
-  filterCategoryOpen: state.visibilityFilterReducer.filterCategoryOpen
-})
-
-export default connect(mapStateToProps)(SortContainer)
+export default SortContainer
