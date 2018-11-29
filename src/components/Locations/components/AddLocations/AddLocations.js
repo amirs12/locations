@@ -63,12 +63,13 @@ class AddLocations extends Component {
           </div>
           <div className="add-buttons">
             <button className="save-button" type="submit">Save</button>
-            <button className="cancel-button" 
-                    onClick={e => {
-                      e.preventDefault()
-                      this.props.closeAddLocation()
-                    }}
-                  >Cancel
+            <button 
+              className="cancel-button" 
+              onClick={e => {
+                e.preventDefault()
+                this.props.closeAddLocation()
+              }}
+            >Cancel
             </button>
           </div>  
         </form>

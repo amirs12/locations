@@ -1,6 +1,8 @@
 const initialState = {
-  visibilityFilterState: "SHOW_ALL",
+  filterState: "SHOW_ALL",
   filterCategoryOpen: false,
+  sortState: "SHOW_BY_ABC",
+  sortCategoryOpen: false,
   selectedPage: 'home'
 }
 
@@ -9,8 +11,13 @@ const visibilityFilterReducer = (state = initialState, action) => {
     case 'SET_VISIBILITY_FILTER':
       return {
         ...state,
-        visibilityFilterState: action.filter
+        filterState: action.filter
       }
+    case 'SET_VISIBILITY_SORT':
+      return {
+        ...state,
+        sortState: action.filter
+      }  
     case 'OPEN_FILTER_BOX':
       return {
         ...state,
@@ -21,6 +28,16 @@ const visibilityFilterReducer = (state = initialState, action) => {
         ...state,
         filterCategoryOpen: false
       }
+    case 'OPEN_SORT_BOX':
+      return {
+        ...state,
+        sortCategoryOpen: true
+      }
+    case 'CLOSE_SORT_BOX':
+      return {
+        ...state,
+        sortCategoryOpen: false
+      }  
     case 'SELECT_PAGE':
       return {
         ...state,

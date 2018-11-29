@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { closefilterBox, savefilteredCategories } from '../../Actions/Actions.js'
+import { closefilterBox, savefilteredCategories } from '../../../../../../Actions/Actions.js'
 
 import './ChooseFilterCategory.css';
 

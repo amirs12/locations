@@ -39,6 +39,19 @@ export const closefilterBox = () => ({
   type: 'CLOSE_FILTER_BOX'
 })
 
+export const setVisibilitySort = filter => ({
+  type: 'SET_VISIBILITY_SORT',
+  filter
+})
+
+export const openSortBox = () => ({
+  type: 'OPEN_SORT_BOX'
+})
+
+export const closeSortBox = () => ({
+  type: 'CLOSE_SORT_BOX'
+})
+
 export const addItem = page => {
   switch (page) {
     case 'categories':

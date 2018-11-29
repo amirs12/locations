@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import FilterAllLink from './components/FilterAllLink/FilterAllLink.js'
 import CategoryLink from './components/CategoryLink/CategoryLink.js'
-import ChooseFilterCategory from '../../../ChooseFilterCategory/ChooseFilterCategory.js'
+import ChooseFilterCategory from './components/ChooseFilterCategory/ChooseFilterCategory.js'
 
 import './FilterContainer.css';
 

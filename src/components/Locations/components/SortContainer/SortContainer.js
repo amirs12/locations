@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import FilterLink from '../../../../containers/FilterLink'
+import { connect } from 'react-redux'
+import SortCategory from './components/SortCategory/SortCategory.js'
+import SortAlpha from './components/SortAlpha/SortAlpha.js'
 import { SortFilters } from '../../../../Actions/Actions.js'
 
 import './SortContainer.css';
@@ -10,16 +12,20 @@ class SortContainer extends Component {
       <div className="sort-container">
         <span className="sort-title">Sort: </span>
         <div className="sort-links">
-          <FilterLink filter={SortFilters.SHOW_BY_CATEGORY}>
+          <SortCategory filter={SortFilters.SHOW_BY_CATEGORY}>
               By Category
-          </FilterLink> 
-          <FilterLink filter={SortFilters.SHOW_BY_ABC}>
+          </SortCategory> 
+          <SortAlpha filter={SortFilters.SHOW_BY_ABC}>
               Alphabetical
-          </FilterLink>
+          </SortAlpha>
         </div>
       </div>  
     );
   }  
 }
 
-export default SortContainer
+const mapStateToProps = state => ({
+  filterCategoryOpen: state.visibilityFilterReducer.filterCategoryOpen
+})
+
+export default connect(mapStateToProps)(SortContainer)

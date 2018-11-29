@@ -6,8 +6,8 @@ import './CategoryLink.css';
 
 class CategoryLink extends Component {
   render() {
-    const { filter, visibilityFilterState } = this.props
-    const active = visibilityFilterState  === 'FILTER_BY_CATEGORY'
+    const { filter, filterState } = this.props
+    const active = filterState  === 'FILTER_BY_CATEGORY'
 
     return (
       <div
@@ -27,7 +27,7 @@ class CategoryLink extends Component {
 }
 
 const mapStateToProps = state => ({
-  visibilityFilterState: state.visibilityFilterReducer.visibilityFilterState
+  filterState: state.visibilityFilterReducer.filterState
 })
 
 export default connect(mapStateToProps, { setVisibilityFilter, openfilterBox })(CategoryLink)

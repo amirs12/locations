@@ -12,18 +12,45 @@ import './Locations.css';
 
 class Locations extends Component {
   render() {
-    const { locations, addLocationOpen, visibilityFilterState, categoryTofilter } = this.props
+    const { 
+      locations, 
+      categories, 
+      addLocationOpen, 
+      visibilitySortState, 
+      visibilityFilterState, 
+      categoryTofilter 
+    } = this.props
     let addLocationBox
  
     if (addLocationOpen) {
       addLocationBox = <AddLocations />
     }
 
-    let visibleLocaiotns
+    let visibleLocaiotns = locations.sort(
+      (a, b) => a.text.localeCompare(b.text, 'en', {'sensitivity': 'base'})
+    )
+
+    if (visibilitySortState === "SORT_BY_CATEGORY") {
+      let sortedCategories = categories.sort(
+        (a, b) => a.text.localeCompare(b.text, 'en', {'sensitivity': 'base'})
+      )
+      let locationsByCategory = []
+      for (let category of sortedCategories) {
+        locationsByCategory = 
+          [...locationsByCategory, 
+          visibleLocaiotns.fliter(location => 
+            (location.chosenCategories.indexOf(category.text) > -1 
+            && locationsByCategory.indexOf(location) < 0
+            )
+          )
+          ]
+      }
+      visibleLocaiotns = locationsByCategory
+    }
+
     if (visibilityFilterState === "FILTER_BY_CATEGORY") {
-      visibleLocaiotns = 
-        locations.filter(location =>
-          (location.chosenCategories.indexOf(categoryTofilter) > -1)
+      visibleLocaiotns.filter(location =>
+        (location.chosenCategories.indexOf(categoryTofilter) > -1)
         ).map(location =>
           <Location
             key={location.id} locations={locations} 
@@ -69,8 +96,10 @@ Locations.propTypes = {
 
 const mapStateToProps = state => ({
   addLocationOpen: state.manageItemReducer.addLocationOpen,
+  visibilitySortState: state.manageItemReducer.visibilitySortState,
   visibilityFilterState: state.visibilityFilterReducer.visibilityFilterState,
-  categoryTofilter: state.manageItemReducer.categoryTofilter
+  categoryTofilter: state.manageItemReducer.categoryTofilter,
+  categories: state.manageItemReducer.categories
 })
 
 export default connect(mapStateToProps)(Locations)
